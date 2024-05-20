@@ -15,6 +15,10 @@ class ProductController extends Controller
     {
         //
         $prods = Product::get();
+        if (request()->segment(1) == 'api') return response()->json([
+            'error' => false,
+            'list' => $prods,
+        ]);
         return view('view_product',[
             'title' => 'Daftar Produk',
             'data' => $prods
